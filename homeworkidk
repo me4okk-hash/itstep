@@ -1,0 +1,139 @@
+# Задание 1
+
+# file_path = "data.txt"
+
+# with open(file_path, "a"):
+#     pass
+
+# line1 = input("Введіть 1 рядок: ")
+# line2 = input("Введіть 2 рядок: ")
+# line3 = input("Введіть 3 рядок: ")
+
+# with open(file_path, "w") as file:
+#     file.write(line1 + "\n")
+#     file.write(line2 + "\n")
+#     file.write(line3 + "\n")
+
+# Задание 2
+
+# file_path = "log.txt"
+# result_path = "word_stats.txt"
+
+# with open(file_path, "a"):
+#     pass
+
+# with open(file_path, "r") as f:
+#     text = f.read().lower()
+
+# words = text.split()
+
+# word_count = {}
+
+# for word in words:
+#     if word in word_count:
+#         word_count[word] += 1
+#     else:
+#         word_count[word] = 1
+
+# top_words = []
+
+# for i in range(10):
+#     max_word = ""
+#     max_count = 0
+
+#     for word in word_count:
+#         if word_count[word] > max_count:
+#             max_count = word_count[word]
+#             max_word = word
+
+#     if max_word == "":
+#         break
+
+#     top_words.append((max_word, max_count))
+#     del word_count[max_word]
+
+# with open(result_path, "w") as f:
+#     for word, count in top_words:
+#         f.write(word + " - " + str(count) + "\n")
+
+# Задание 3 
+
+file_path = "orders.txt"
+
+# створюємо файл
+with open(file_path, "a"):
+    pass
+
+def add_order():
+    number = input("Введiть номер замовлення: ")
+    product = input("Товар: ")
+    quantity = input("Кількість: ")
+    price = input("Ціна: ")
+
+    with open(file_path, "a") as order:
+        order.write(number + "," + product + "," + quantity + "," + price + "\n")
+
+def show_orders():
+    with open(file_path, "r") as order:
+        for line in order:
+            print(line.strip())
+
+def search_order():
+    number = input("Введiть номер замовлення: ")
+
+    with open(file_path, "r") as order:
+        for line in order:
+            if line.startswith(number + ","):
+                print(line.strip())
+
+def update_order():
+    number = input("Введiть номер замовлення: ")
+    new_lines = []
+
+    with open(file_path, "r") as order:
+        for line in order:
+            if line.startswith(number + ","):
+                product = input("Новий товар: ")
+                quantity = input("Нова кількість: ")
+                price = input("Нова ціна: ")
+                new_lines.append(number + "," + product + "," + quantity + "," + price + "\n")
+            else:
+                new_lines.append(line)
+
+    with open(file_path, "w") as order:
+        order.writelines(new_lines)
+
+def delete_order():
+    number = input("Введiть номер замовлення: ")
+    new_lines = []
+
+    with open(file_path, "r") as order:
+        for line in order:
+            if not line.startswith(number + ","):
+                new_lines.append(line)
+
+    with open(file_path, "w") as order :
+        order.writelines(new_lines)
+
+while True:
+    print("\n1 - Додати")
+    print("2 - Показати")
+    print("3 - Пошук")
+    print("4 - Оновити")
+    print("5 - Видалити")
+    print("6 - Вихід")
+
+    choice = input("Ваш вибір: ")
+
+    if choice == "1":
+        add_order()
+    elif choice == "2":
+        show_orders()
+    elif choice == "3":
+        search_order()
+    elif choice == "4":
+        update_order()
+    elif choice == "5":
+        delete_order()
+    elif choice == "6":
+        break
