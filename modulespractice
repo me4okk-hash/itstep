@@ -1,0 +1,89 @@
+import random as r
+import turtle as t
+
+# Задание 1
+
+# t.shape("turtle")
+# t.pensize(5)
+# t.color("red")
+# t.speed("fastest")
+
+# t.forward(90)
+# t.right(90)
+# t.forward(90)
+# t.right(90)
+# t.forward(90)
+# t.right(90)
+# t.forward(90)
+# t.penup()
+# t.back(90)
+
+# t.left(90)
+# t.forward(50)
+
+# t.color("green")
+# t.pendown()
+# t.forward(100)
+# t.right(120)
+# t.forward(100)
+# t.right(120)
+# t.forward(100)
+# t.penup()
+# t.right(120)
+# t.forward(100)
+
+# t.color("blue")
+# t.forward(60)
+# t.pendown()
+# t.forward(60)
+# t.right(70)
+# t.forward(60)
+# t.right(70)
+# t.forward(60)
+# t.right(70)
+# t.forward(60)
+# t.right(70)
+# t.forward(60)
+
+# t.done()
+
+#Задание 2
+
+# t.shape("turtle")
+# t.pensize(5)
+# t.speed(2)
+
+# t.begin_fill()
+# t.forward(90)
+# t.right(90)
+# t.forward(90)
+# t.right(90)
+# t.forward(90)
+# t.right(90)
+# t.forward(90)
+# t.end_fill()
+# t.color("brown")
+# t.fillcolor("brown")
+# t.begin_fill()
+# t.right(45)
+# t.forward(60)
+# t.right(90)
+# t.forward(60)
+# t.end_fill()
+
+# t.done()
+
+t.shape("turtle")
+t.pensize(5)
+t.speed(2)
+
+for i in range(36):
+    t.color(r.random(), r.random(), r.random())
+
+    for j in range(4):
+        t.forward(90)
+        t.right(90)
+
+    t.right(10)
+
+t.done()
